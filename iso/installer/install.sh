@@ -23,7 +23,7 @@ myLSB_TESTING_SUPPORTED="stable"
 myREMOTESITES="https://hub.docker.com https://github.com https://pypi.python.org https://debian.org https://listbot.sicherheitstacho.eu"
 myPREINSTALLPACKAGES="aria2 apache2-utils cracklib-runtime curl dialog figlet fuse grc libcrack2 libpq-dev lsb-release net-tools software-properties-common toilet"
 # myINSTALLPACKAGES="aria2 apache2-utils apparmor apt-transport-https aufs-tools bash-completion build-essential ca-certificates cgroupfs-mount cockpit cockpit-docker console-setup console-setup-linux cracklib-runtime curl debconf-utils dialog dnsutils docker.io docker-compose ethtool fail2ban figlet genisoimage git glances grc haveged html2text htop iptables iw jq kbd libcrack2 libltdl7 libpam-google-authenticator man mosh multitail net-tools npm ntp openssh-server openssl pass pigz prips software-properties-common syslinux psmisc pv python3-pip toilet unattended-upgrades unzip vim wget wireless-tools wpasupplicant"
-myINSTALLPACKAGES="aria2 apache2-utils apparmor apt-transport-https aufs-tools bash-completion build-essential ca-certificates cgroupfs-mount console-setup console-setup-linux cracklib-runtime curl debconf-utils dialog dnsutils docker.io docker-compose ethtool fail2ban figlet genisoimage git glances grc haveged html2text htop iptables iw jq kbd libcrack2 libltdl7 libpam-google-authenticator man mosh multitail net-tools ntp openssh-server openssl pass pigz prips software-properties-common syslinux psmisc pv python3-pip toilet unattended-upgrades unzip vim wget wireless-tools wpasupplicant"
+myINSTALLPACKAGES="aria2 apache2-utils apparmor apt-transport-https aufs-tools bash-completion build-essential ca-certificates cgroupfs-mount console-setup console-setup-linux cracklib-runtime curl debconf-utils dialog dnsutils docker.io docker-compose ethtool figlet genisoimage git glances grc haveged html2text htop iptables iw jq kbd libcrack2 libltdl7 libpam-google-authenticator man mosh multitail net-tools ntp openssh-server openssl pass pigz prips software-properties-common syslinux psmisc pv python3-pip toilet unattended-upgrades unzip vim wget wireless-tools wpasupplicant"
 myINFO="\
 ###########################################
 ### T-Pot Installer for Debian (Stable) ###
@@ -127,30 +127,30 @@ net.ipv6.conf.all.disable_ipv6 = 1
 net.ipv6.conf.default.disable_ipv6 = 1
 net.ipv6.conf.lo.disable_ipv6 = 1
 "
-myFAIL2BANCONF="[DEFAULT]
-ignore-ip = 127.0.0.1/8
-bantime = 3600
-findtime = 600
-maxretry = 5
+# myFAIL2BANCONF="[DEFAULT]
+# ignore-ip = 127.0.0.1/8
+# bantime = 3600
+# findtime = 600
+# maxretry = 5
 
-[nginx-http-auth]
-enabled  = true
-filter   = nginx-http-auth
-port     = 64297
-logpath  = /data/nginx/log/error.log
+# [nginx-http-auth]
+# enabled  = true
+# filter   = nginx-http-auth
+# port     = 64297
+# logpath  = /data/nginx/log/error.log
 
-[pam-generic]
-enabled = true
-port    = 64294
-filter  = pam-generic
-logpath = /var/log/auth.log
+# [pam-generic]
+# enabled = true
+# port    = 64294
+# filter  = pam-generic
+# logpath = /var/log/auth.log
 
-[sshd]
-enabled = true
-port    = 64295
-filter  = sshd
-logpath = /var/log/auth.log
-"
+# [sshd]
+# enabled = true
+# port    = 64295
+# filter  = sshd
+# logpath = /var/log/auth.log
+# "
 mySYSTEMDFIX="[Link]
 NamePolicy=kernel database onboard slot path
 MACAddressPolicy=none
@@ -777,9 +777,9 @@ echo "$myUPDATECHECK" | tee /etc/apt/apt.conf.d/10periodic
 fuBANNER "Tweak sysctl"
 echo "$mySYSCTLCONF" | tee -a /etc/sysctl.conf
 
-# Let's setup fail2ban config
-fuBANNER "Setup fail2ban"
-echo "$myFAIL2BANCONF" | tee /etc/fail2ban/jail.d/tpot.conf
+# # Let's setup fail2ban config
+# fuBANNER "Setup fail2ban"
+# echo "$myFAIL2BANCONF" | tee /etc/fail2ban/jail.d/tpot.conf
 
 # Fix systemd error https://github.com/systemd/systemd/issues/3374
 fuBANNER "Systemd fix"
