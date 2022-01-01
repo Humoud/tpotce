@@ -1,4 +1,0 @@
-- pipeline.id: logstash
-  path.config: "/etc/logstash/conf.d/logstash.conf"
-- pipeline.id: http
-  path.config: "/etc/logstash/conf.d/http.conf"

@@ -22,7 +22,8 @@ myLSB_STABLE_SUPPORTED="stretch buster"
 myLSB_TESTING_SUPPORTED="stable"
 myREMOTESITES="https://hub.docker.com https://github.com https://pypi.python.org https://debian.org https://listbot.sicherheitstacho.eu"
 myPREINSTALLPACKAGES="aria2 apache2-utils cracklib-runtime curl dialog figlet fuse grc libcrack2 libpq-dev lsb-release net-tools software-properties-common toilet"
-myINSTALLPACKAGES="aria2 apache2-utils apparmor apt-transport-https aufs-tools bash-completion build-essential ca-certificates cgroupfs-mount cockpit cockpit-docker console-setup console-setup-linux cracklib-runtime curl debconf-utils dialog dnsutils docker.io docker-compose ethtool fail2ban figlet genisoimage git glances grc haveged html2text htop iptables iw jq kbd libcrack2 libltdl7 libpam-google-authenticator man mosh multitail net-tools npm ntp openssh-server openssl pass pigz prips software-properties-common syslinux psmisc pv python3-pip toilet unattended-upgrades unzip vim wget wireless-tools wpasupplicant"
+# myINSTALLPACKAGES="aria2 apache2-utils apparmor apt-transport-https aufs-tools bash-completion build-essential ca-certificates cgroupfs-mount cockpit cockpit-docker console-setup console-setup-linux cracklib-runtime curl debconf-utils dialog dnsutils docker.io docker-compose ethtool fail2ban figlet genisoimage git glances grc haveged html2text htop iptables iw jq kbd libcrack2 libltdl7 libpam-google-authenticator man mosh multitail net-tools npm ntp openssh-server openssl pass pigz prips software-properties-common syslinux psmisc pv python3-pip toilet unattended-upgrades unzip vim wget wireless-tools wpasupplicant"
+myINSTALLPACKAGES="aria2 apache2-utils apparmor apt-transport-https aufs-tools bash-completion build-essential ca-certificates cgroupfs-mount console-setup console-setup-linux cracklib-runtime curl debconf-utils dialog dnsutils docker.io docker-compose ethtool fail2ban figlet genisoimage git glances grc haveged html2text htop iptables iw jq kbd libcrack2 libltdl7 libpam-google-authenticator man mosh multitail net-tools npm ntp openssh-server openssl pass pigz prips software-properties-common syslinux psmisc pv python3-pip toilet unattended-upgrades unzip vim wget wireless-tools wpasupplicant"
 myINFO="\
 ###########################################
 ### T-Pot Installer for Debian (Stable) ###
@@ -717,14 +718,14 @@ if [ -f '/etc/cloud/cloud.cfg' ]; then
 fi
 
 # Let's patch cockpit.socket, sshd_config
-fuBANNER "Adjust ports"
-mkdir -p /etc/systemd/system/cockpit.socket.d
-echo "$myCOCKPIT_SOCKET" | tee /etc/systemd/system/cockpit.socket.d/listen.conf
-sed -i '/^port/Id' /etc/ssh/sshd_config
-echo "$mySSHSETTINGS" | tee -a /etc/ssh/sshd_config
+# fuBANNER "Adjust ports"
+# mkdir -p /etc/systemd/system/cockpit.socket.d
+# echo "$myCOCKPIT_SOCKET" | tee /etc/systemd/system/cockpit.socket.d/listen.conf
+# sed -i '/^port/Id' /etc/ssh/sshd_config
+# echo "$mySSHSETTINGS" | tee -a /etc/ssh/sshd_config
 
-# Do not allow root login for cockpit
-sed -i '2i\auth requisite pam_succeed_if.so uid >= 1000' /etc/pam.d/cockpit
+# # Do not allow root login for cockpit
+# sed -i '2i\auth requisite pam_succeed_if.so uid >= 1000' /etc/pam.d/cockpit
 
 # Let's make sure only myCONF_TPOT_FLAVOR images will be downloaded and started
 case $myCONF_TPOT_FLAVOR in
