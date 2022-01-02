@@ -11,14 +11,14 @@ networks:
   conpot_local_ipmi:
   conpot_local_kamstrup_382:
   cowrie_local:
-  dicompot_local:
+  # dicompot_local:
   dionaea_local:
   elasticpot_local:
-  heralding_local:
+  # heralding_local:
   honeypy_local:
-  honeysap_local:
+  # honeysap_local:
   mailoney_local:
-  medpot_local:
+  # medpot_local:
   rdpy_local:
   tanner_local:
   # ewsposter_local:
@@ -182,18 +182,18 @@ services:
 # Get the Horos Client for testing: https://horosproject.org/
 # Get Dicom images (CC BY 3.0): https://www.cancerimagingarchive.net/collections/
 # Put images (which must be in Dicom DCM format or it will not work!) into /data/dicompot/images
-  dicompot:
-    container_name: dicompot
-    restart: always
-    networks:
-     - dicompot_local
-    ports:
-     - "11112:11112"
-    image: "dtagdevsec/dicompot:2006"
-    read_only: true
-    volumes:
-     - /data/dicompot/log:/var/log/dicompot
-#     - /data/dicompot/images:/opt/dicompot/images
+#   dicompot:
+#     container_name: dicompot
+#     restart: always
+#     networks:
+#      - dicompot_local
+#     ports:
+#      - "11112:11112"
+#     image: "dtagdevsec/dicompot:2006"
+#     read_only: true
+#     volumes:
+#      - /data/dicompot/log:/var/log/dicompot
+# #     - /data/dicompot/images:/opt/dicompot/images
 
 # Dionaea service
   dionaea:
@@ -246,34 +246,34 @@ services:
      - /data/elasticpot/log:/opt/elasticpot/log
 
 # Heralding service
-  heralding:
-    container_name: heralding
-    restart: always
-    tmpfs:
-     - /tmp/heralding:uid=2000,gid=2000
-    networks:
-     - heralding_local
-    ports:
-    # - "21:21"
-    # - "22:22"
-    # - "23:23"
-    # - "25:25"
-    # - "80:80"
-     - "110:110"
-     - "143:143"
-    # - "443:443"
-     - "465:465"
-     - "993:993"
-     - "995:995"
-    # - "3306:3306"
-    # - "3389:3389"
-     - "1080:1080"
-     - "5432:5432"
-     - "5900:5900"
-    image: "dtagdevsec/heralding:2006"
-    read_only: true
-    volumes:
-     - /data/heralding/log:/var/log/heralding
+  # heralding:
+  #   container_name: heralding
+  #   restart: always
+  #   tmpfs:
+  #    - /tmp/heralding:uid=2000,gid=2000
+  #   networks:
+  #    - heralding_local
+  #   ports:
+  #   # - "21:21"
+  #   # - "22:22"
+  #   # - "23:23"
+  #   # - "25:25"
+  #   # - "80:80"
+  #    - "110:110"
+  #    - "143:143"
+  #   # - "443:443"
+  #    - "465:465"
+  #    - "993:993"
+  #    - "995:995"
+  #   # - "3306:3306"
+  #   # - "3389:3389"
+  #    - "1080:1080"
+  #    - "5432:5432"
+  #    - "5900:5900"
+  #   image: "dtagdevsec/heralding:2006"
+  #   read_only: true
+  #   volumes:
+  #    - /data/heralding/log:/var/log/heralding
 
 # HoneyPy service
   honeypy:
@@ -295,16 +295,16 @@ services:
      - /data/honeypy/log:/opt/honeypy/log
 
 # HoneySAP service
-  honeysap:
-    container_name: honeysap
-    restart: always
-    networks:
-     - honeysap_local
-    ports:
-     - "3299:3299"
-    image: "dtagdevsec/honeysap:2006"
-    volumes:
-     - /data/honeysap/log:/opt/honeysap/log
+  # honeysap:
+  #   container_name: honeysap
+  #   restart: always
+  #   networks:
+  #    - honeysap_local
+  #   ports:
+  #    - "3299:3299"
+  #   image: "dtagdevsec/honeysap:2006"
+  #   volumes:
+  #    - /data/honeysap/log:/opt/honeysap/log
 
 # Honeytrap service
   honeytrap:
@@ -342,17 +342,17 @@ services:
      - /data/mailoney/log:/opt/mailoney/logs
 
 # Medpot service
-  medpot:
-    container_name: medpot
-    restart: always
-    networks:
-     - medpot_local
-    ports:
-     - "2575:2575"
-    image: "dtagdevsec/medpot:2006"
-    read_only: true
-    volumes:
-     - /data/medpot/log/:/var/log/medpot
+  # medpot:
+  #   container_name: medpot
+  #   restart: always
+  #   networks:
+  #    - medpot_local
+  #   ports:
+  #    - "2575:2575"
+  #   image: "dtagdevsec/medpot:2006"
+  #   read_only: true
+  #   volumes:
+  #    - /data/medpot/log/:/var/log/medpot
 
 # Rdpy service
   rdpy:
