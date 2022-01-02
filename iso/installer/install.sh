@@ -705,17 +705,17 @@ fuBANNER "Create user"
 adduser --system --no-create-home --uid 2000 --disabled-password --disabled-login --gid 2000 tpot
 
 # Let's set the hostname
-a=$(fuRANDOMWORD /opt/tpot/host/usr/share/dict/a.txt)
-n=$(fuRANDOMWORD /opt/tpot/host/usr/share/dict/n.txt)
-myHOST=$a$n
-fuBANNER "Set hostname"
-hostnamectl set-hostname $myHOST
-sed -i 's#127.0.1.1.*#127.0.1.1\t'"$myHOST"'#g' /etc/hosts
+# a=$(fuRANDOMWORD /opt/tpot/host/usr/share/dict/a.txt)
+# n=$(fuRANDOMWORD /opt/tpot/host/usr/share/dict/n.txt)
+# myHOST=$a$n
+# fuBANNER "Set hostname"
+# hostnamectl set-hostname $myHOST
+# sed -i 's#127.0.1.1.*#127.0.1.1\t'"$myHOST"'#g' /etc/hosts
 
 # Prevent cloud-init from overwriting our new hostname
-if [ -f '/etc/cloud/cloud.cfg' ]; then
-    sed -i 's/preserve_hostname.*/preserve_hostname: true/g' /etc/cloud/cloud.cfg
-fi
+# if [ -f '/etc/cloud/cloud.cfg' ]; then
+#     sed -i 's/preserve_hostname.*/preserve_hostname: true/g' /etc/cloud/cloud.cfg
+# fi
 
 # Let's patch cockpit.socket, sshd_config
 # fuBANNER "Adjust ports"
