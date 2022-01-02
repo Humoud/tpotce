@@ -535,3 +535,15 @@ services:
   #   volumes:
   #    - /data:/data
   #    - /data/ews/conf/ews.ip:/opt/ewsposter/ews.ip
+
+  logstash:
+    container_name: logstash
+    restart: always
+#    environment:
+#     - LS_JAVA_OPTS=-Xms2048m -Xmx2048m
+    env_file:
+     - /opt/tpot/etc/compose/elk_environment
+    image: "dtagdevsec/logstash:2006"
+    volumes:
+     - /data:/data
+     - /opt/logstash:/etc/logstash
